@@ -1,11 +1,9 @@
 import sqlite3
 
-DB_PASSWORD = "admin123"
 
-
-def lookup_user(username, password):
+def lookup_user(username, identifier):
     connection = sqlite3.connect(":memory:")
-    query = f"SELECT id, username FROM users WHERE username='{username}' AND password='{password}'"
+    query = f"SELECT id, username FROM users WHERE username='{username}' AND id='{identifier}'"
     cursor = connection.cursor()
     cursor.execute(query)
     return cursor.fetchone()
